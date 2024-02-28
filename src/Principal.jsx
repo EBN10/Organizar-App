@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function Principal({ setTareas, tareas }) {
   const [titulo, setTitulo] = useState('');
@@ -35,5 +36,10 @@ function Principal({ setTareas, tareas }) {
     </div>
   );
 }
+
+Principal.propTypes = {
+  setTareas: PropTypes.func.isRequired,
+  tareas: PropTypes.array.isRequired
+};
 
 export default Principal;

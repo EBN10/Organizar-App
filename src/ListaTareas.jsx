@@ -1,4 +1,5 @@
 import Tarea from './components/Tarea';
+import PropTypes from 'prop-types';
 
 function ListaTareas({ tareas, setTareas }) {
   return (
@@ -24,5 +25,10 @@ function ListaTareas({ tareas, setTareas }) {
     </div>
   );
 }
+
+ListaTareas.propTypes = {
+  setTareas: PropTypes.func.isRequired,
+  tareas: PropTypes.array.isRequired
+};
 
 export default ListaTareas;

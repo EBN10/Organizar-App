@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function Tarea({ tarea, setTareas, tareas }) {
   const [completada, setCompletada] = useState(false);
@@ -35,5 +36,14 @@ function Tarea({ tarea, setTareas, tareas }) {
     </article>
   );
 }
+
+Tarea.propTypes = {
+  setTareas: PropTypes.func.isRequired,
+  tareas: PropTypes.array.isRequired,
+  tarea: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired
+  })
+};
 
 export default Tarea;
