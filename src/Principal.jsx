@@ -1,18 +1,18 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function Principal({ setTareas, tareas }) {
-  const [titulo, setTitulo] = useState("");
+  const [titulo, setTitulo] = useState('');
   const manejarSubmit = (e) => {
     e.preventDefault();
     const nuevaTarea = {
       id: tareas.length + 1,
-      title: titulo,
+      title: titulo
     };
     setTareas([...tareas, nuevaTarea]);
-    setTitulo("");
+    setTitulo('');
   };
   return (
-    <div className="w-full lg:h-full h-1/2 flex flex-col justify-center items-center gap-8">
+    <div className="w-full lg:w-1/2 lg:h-full h-1/2 shrink-0 flex flex-col justify-center items-center gap-8">
       <h1 className="text-5xl lg:text-7xl font-bold text-amber-400 text-center">
         Organizate <br /> Mejor
       </h1>
