@@ -1,35 +1,45 @@
-import { useState } from "react";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function Principal({ setTareas, tareas }) {
-  const [titulo, setTitulo] = useState("");
+  const [titulo, setTitulo] = useState('');
   const manejarSubmit = (e) => {
     e.preventDefault();
+    if (titulo === '') return;
+
     const nuevaTarea = {
       id: tareas.length + 1,
-      title: titulo,
+      title: titulo
     };
     setTareas([...tareas, nuevaTarea]);
-    setTitulo("");
+    setTitulo('');
   };
   return (
-    <div className="w-full lg:h-full h-1/2 flex flex-col justify-center items-center gap-8">
-      <h1 className="text-5xl lg:text-7xl font-bold text-amber-400 text-center">
-        Organizate <br /> Mejor
+    <div className="w-full lg:w-1/2 lg:h-full h-1/2 shrink-0 flex flex-col justify-center items-center gap-8">
+      <h1 className="text-5xl lg:text-6xl font-bold text-amber-400 drop-shadow-sm text-center">
+        Organizate
+        <br />
+        Mejor
       </h1>
       <form className="flex gap-2 justify-center" onSubmit={manejarSubmit}>
         <input
           type="text"
           placeholder="Ingrese la tarea"
-          className="border-2 border-gray-400 rounded-lg p-2 w-70 shadow-lg text-gray-900 outline-amber-400 lg:text-xl"
+          className="border-2 bg-white/10 transition hover:scale-105 hover:shadow-xl hover:bg-gray-50 focus-visible:bg-gray-50 border-gray-400 rounded-lg p-2 w-70 shadow-lg text-gray-900 outline-amber-400 lg:text-lg"
           value={titulo}
           onChange={(e) => setTitulo(e.target.value)}
         />
-        <button className="border-2 border-gray-400 rounded-lg p-2 shadow-lg font-semibold text-gray-600 hover:bg-gray-50 transition hover:scale-105 hover:shadow-xl lg:text-xl">
+        <button className="border-2 bg-white/10 border-gray-400 rounded-lg p-2 shadow-lg font-semibold text-gray-600 hover:bg-gray-50 transition hover:scale-105 hover:shadow-xl lg:text-lg">
           Añadir
         </button>
       </form>
     </div>
   );
 }
+
+Principal.propTypes = {
+  setTareas: PropTypes.func.isRequired,
+  tareas: PropTypes.array.isRequired
+};
 
 export default Principal;
