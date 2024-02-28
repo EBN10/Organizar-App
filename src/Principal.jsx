@@ -4,6 +4,8 @@ function Principal({ setTareas, tareas }) {
   const [titulo, setTitulo] = useState('');
   const manejarSubmit = (e) => {
     e.preventDefault();
+    if (titulo === '') return;
+
     const nuevaTarea = {
       id: tareas.length + 1,
       title: titulo
